@@ -5,6 +5,8 @@ import org.example.model.dto.PlayerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 /**
  * @author Anatoliy Shikin
  */
@@ -12,6 +14,9 @@ import org.mapstruct.Mapping;
 public interface PlayerMapper {
 
     PlayerDto toDto(Player player);
+
     @Mapping(target = "id", ignore = true)
     Player toEntity(PlayerDto playerDto);
+
+    List<Player> toListEntity(List<PlayerDto> playerDtoList);
 }

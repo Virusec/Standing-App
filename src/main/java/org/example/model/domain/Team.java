@@ -18,7 +18,7 @@ import java.util.List;
  * @author Anatoliy Shikin
  */
 @Entity
-@Table(name = "teamDto")
+@Table(name = "team")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -29,7 +29,7 @@ public class Team {
     private Long id;
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "teamName")
     private List<Player> players;
 
 }

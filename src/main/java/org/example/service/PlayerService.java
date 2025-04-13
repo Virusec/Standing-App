@@ -16,4 +16,5 @@ public interface PlayerService {
 
     Page<PlayerDto> getAllPlayers(Pageable pageable);
 
+    PlayerDto update(PlayerDto playerDto);
 }

@@ -6,6 +6,6 @@ package org.example.model.dto;
 public record PlayerDto(
         String firstName,
         String lastName,
-        TeamDto team
+        String teamName
 ) {
 }

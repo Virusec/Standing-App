@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,8 +32,7 @@ public class Player {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id", referencedColumnName = "id")
-    private Team team;
+    @Column(name = "team_name")
+    private String teamName;
 
 }

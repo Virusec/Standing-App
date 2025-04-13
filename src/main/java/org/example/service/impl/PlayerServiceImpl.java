@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 /**
  * @author Anatoliy Shikin
  */
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
     private final PlayerMapper playerMapper;
+
     @Override
     public String create(PlayerDto playerDto) {
         Player player = playerMapper.toEntity(playerDto);
@@ -44,5 +47,16 @@ public class PlayerServiceImpl implements PlayerService {
     public Page<PlayerDto> getAllPlayers(Pageable pageable) {
         Page<Player> players = playerRepository.findAll(pageable);
         return players.map(playerMapper::toDto);
+    }
+
+    @Override
+    public PlayerDto update(PlayerDto playerDto) {
+        Player player = playerRepository
+                .findByFirstNameAndLastName(playerDto.firstName(), playerDto.lastName())
+                .orElseThrow(() -> new NoSuchElementException("Данного игрока не существует!"));
+        player.setFirstName(playerDto.firstName());
+        player.setLastName(playerDto.lastName());
+        player.setTeamName(playerDto.teamName() != null ? playerDto.teamName() : null);
+        return playerMapper.toDto(playerRepository.save(player));
     }
 }
