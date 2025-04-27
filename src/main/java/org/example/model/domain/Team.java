@@ -35,4 +35,6 @@ public class Team {
     @OneToMany(mappedBy = "teamName")
     private List<Player> players;
 
+    @Column(name = "games")
+    private Integer games;
 }

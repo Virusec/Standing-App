@@ -11,6 +11,7 @@ public record MatchDto(
         TeamDto ownerTeam,
         TeamDto guestTeam,
         int ownerPoints,
-        int guestPoints
+        int guestPoints,
+        boolean isOwnerWin
 ) {
 }
