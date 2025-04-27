@@ -25,6 +25,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 public class Standing {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
