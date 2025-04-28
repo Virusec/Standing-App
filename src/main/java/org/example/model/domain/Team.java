@@ -24,12 +24,17 @@ import java.util.List;
 @Getter
 @Setter
 public class Team {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @OneToMany(mappedBy = "teamName")
     private List<Player> players;
 
+    @Column(name = "games")
+    private Integer games;
 }

@@ -9,6 +9,7 @@ import java.util.List;
 public record TeamDto(
         Long id,
         String name,
-        List<PlayerDto> players
+        List<PlayerDto> players,
+        Integer games
 ) {
 }

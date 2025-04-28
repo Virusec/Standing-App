@@ -1,5 +1,6 @@
 package org.example.model.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,11 +37,11 @@ public class Match {
     @Column(name = "date")
     private LocalDate date;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_team_id", referencedColumnName = "id")
     private Team ownerTeam;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "guest_team_id", referencedColumnName = "id")
     private Team guestTeam;
 
@@ -49,4 +50,7 @@ public class Match {
 
     @Column(name = "guest_points")
     private Integer guestPoints;
+
+    @Column(name = "is_owner_win")
+    private boolean isOwnerWin;
 }
