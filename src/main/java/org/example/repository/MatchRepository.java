@@ -13,10 +13,12 @@ import java.util.List;
  */
 public interface MatchRepository extends JpaRepository<Match, Long> {
     @Query(value = "SELECT m.* " +
-            "FROM match AS m " +
-            "JOIN team o ON m.owner_team_id = o.id" +
-            "JOIN team g ON m.guest_team_id = g.id" +
-            "WHERE (o.name = :name OR g.name = :name)" +
-            "AND DATE(m.date) <= DATE(:date)", nativeQuery = true)
-    List<Match> findByOwnerTeamName(@Param("name") String name, @Param("date") LocalDate localDate);
+            "FROM match m " +
+            "JOIN team o ON m.owner_team_id = o.id " +
+            "JOIN team g ON m.guest_team_id = g.id " +
+            "WHERE (o.name = :name OR g.name = :name) " +
+            " AND m.date <= :dt",
+            nativeQuery = true
+    )
+    List<Match> findByOwnerTeamName(@Param("name") String name, @Param("dt") LocalDate localDate);
 }

@@ -41,7 +41,7 @@ public class MatchServiceImpl implements MatchService {
                 .filter(match -> !match.isOwnerWin())
                 .toList();
 
-        return (listGuestTeam.size() + listGuestTeam.size()) * 3;
+        return (listGuestTeam.size() + listOwnerTeam.size()) * 3;
     }
 
 }
